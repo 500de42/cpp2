@@ -1,5 +1,17 @@
 #include "Fixed.hpp"
 
+const int Fixed::NbBits = 8;
+
+Fixed& Fixed::operator=(const Fixed &other)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    if (this != &other)
+    {
+        this->fixed_point_value = other.fixed_point_value;
+    }
+    return *this;
+}
+
 Fixed::Fixed(void)
 {
     std::cout << "Default constructor called" << std::endl;
@@ -14,7 +26,7 @@ Fixed::~Fixed(void)
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
-    this->fixed_point_value = other.fixed_point_value;
+    *this = other;
 }
 
 Fixed::Fixed(const int nb)
@@ -29,15 +41,7 @@ Fixed::Fixed(const float nb)
     this->fixed_point_value = roundf(nb * 256);
 }
 
-Fixed& Fixed::operator=(const Fixed &other)
-{
-    std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
-    {
-        this->fixed_point_value = other.fixed_point_value;
-    }
-    return *this;
-}
+
 
 int Fixed::getRawBits(void) const
 {

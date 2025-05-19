@@ -29,7 +29,7 @@ Fixed& Fixed::operator=(const Fixed &other)
 {
     if (this != &other)
     {
-        this->fixed_point_value = other.getRawBits();
+        this->fixed_point_value = other.fixed_point_value;
     }
     return *this;
 }
@@ -80,7 +80,8 @@ Fixed Fixed::operator*(const Fixed &other) const
 {
     Fixed obj;
 
-    obj.fixed_point_value = (this->fixed_point_value * other.fixed_point_value) / 256;
+    obj.fixed_point_value = this->fixed_point_value * other.fixed_point_value;
+    obj.fixed_point_value =  obj.fixed_point_value / 256;
     return obj;
 }
 
