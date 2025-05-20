@@ -187,7 +187,7 @@ const Fixed &Fixed::max(const Fixed &nb1, const Fixed &nb2)
 
 const Fixed &Fixed::min(const Fixed &nb1, const Fixed &nb2)
 {
-    if (nb1 > nb2)
+    if (nb1 < nb2)
         return nb1;
     return nb2;
 }
