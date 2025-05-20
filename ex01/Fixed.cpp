@@ -41,8 +41,6 @@ Fixed::Fixed(const float nb)
     this->fixed_point_value = roundf(nb * 256);
 }
 
-
-
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
